@@ -3,5 +3,9 @@
     border: 1px solid #c7d0da;
     border-radius: $borderRadius;
     padding: $basePadding;  
-    margin-bottom: $basePadding;   
+    margin-bottom: $basePadding;  
+    
+    & > * {
+        margin: 0 $basePadding/2;
+    }
 }

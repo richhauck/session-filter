@@ -1,30 +1,32 @@
 import React from 'react';
-import closeIcon from '../images/close-24px.svg';
+import Selector from './Selector';
 import CloseButton from './CloseButton';
+
+const s1_Options = [
+    {label:"User Email", value:"User Email"},
+    {label:"Screen Width", value:"Screen Width"},
+    {label:"Screen Height", value:"Screen Height"},
+    {label:"# of Visits", value:"# of Visits"},
+    {label:"First", value:"First"},
+    {label:"Name", value:"Name"},
+    {label:"Last Name", value:"Last Name"},
+    {label:"Page Response time (ms)", value:"Page Response time (ms)"},
+    {label:"Domain", value:"Domain"},
+    {label:"Page Path", value:"Page Path"}
+];
+const s2_Options = [
+    {label:'equals', value:'equals'}, 
+    {label:'contains', value: 'contains'}, 
+    {label:'starts with', value: 'starts with'}, 
+    {label:'in list', value: 'in list'}
+];
 
 function QueryRow(){
     return (
         <div className="query-row">
             <CloseButton />
-            <select>
-                <option value="">User Email</option>
-                <option value="">Screen Width</option>
-                <option value="">Screen Height</option>
-                <option value=""># of Visits</option>
-                <option value="">First</option>
-                <option value="">Name</option>
-                <option value="">Last Name</option>
-                <option value="">Page Response time (ms)</option>
-                <option value="">Domain</option>
-                <option value="">Page Path</option>
-            </select>
-            <select>
-            <option value="">equals</option>
-            <option value="">contains</option>
-            <option value="">starts with</option>
-            <option value="">in list</option>
-            </select>
-
+            <Selector options={s1_Options}/>
+            <Selector options={s2_Options}/>
             <input type="text" placeholder="website.com"></input>
 
         </div>)

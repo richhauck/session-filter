@@ -1,7 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
 import searchIcon from '../images/search-24px.svg';
 
 function SearchButton(){
-    return <button className="searchbutton"><img src={searchIcon} alt="Search"/> <span>Search</span></button>
+    const classes = classNames('searchbutton', 'button');
+    return <button className={classes}><img src={searchIcon} alt="Search"/> <span>Search</span></button>
 }
 export default SearchButton;

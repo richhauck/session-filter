@@ -1,0 +1,71 @@
+
+.selector-wrapper {
+    position: relative;
+    user-select: none;
+}
+.selector-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: $borderRadius;
+}
+.selector__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    cursor: pointer;
+    border-radius: $borderRadius;
+    border: 1px solid $borderColor;
+}
+.selector-options {
+    position: absolute;
+    display: block;
+    top: 120%;
+    left: 0;
+    right: 0;
+    border-top: 0;
+    background: #fff;
+    transition: all 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+    border-radius: $borderRadius;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+
+    & > span {
+        position: relative;
+        display: block;
+        padding: 0 22px 0 22px;
+        line-height: 40px;
+        cursor: pointer;
+        transition: all 0.5s;
+    
+        &:hover {
+            color: $blue;
+        }
+        &.selected {
+            font-weight: bold;
+        }
+    }
+}
+.selector.open .selector-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.selector__icon {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    transition: all 0.5s;
+    transform: rotate(0);
+    display: flex;  
+}
+
+.open .selector__icon {
+    transform: rotate(-180deg);
+}
