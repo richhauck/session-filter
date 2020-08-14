@@ -42,7 +42,7 @@ function Selector(props){
         <div className="selector-wrapper" onClick={onClickHandler}>
         <div className={classes}>
             <div className="selector__trigger"><span className="selected-value">{selectedValue}</span>
-                <img src={chevron} alt="Arrow" className="selector__icon" />
+                <div className="selector__icon"><img src={chevron} alt="Arrow" /></div>
             </div>
             <div ref={wrapperRef} className="selector-options" onClick={onOptionsClickHandler}>
                 {options.map((option, id) => <span data-value={option.value} key={option.label + id}>{option.label}</span>)}

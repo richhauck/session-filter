@@ -1,9 +1,11 @@
 .button{
+    display: inline-block;
     color: #fff;
+    font-size: 1.25em;
     cursor: pointer;
     border-color: transparent;
     border-style: solid;
     background-color: $blue;
     border-radius: $borderRadius;
-    padding:0 $basePadding;
+    padding:$basePadding/2 $basePadding;
 }

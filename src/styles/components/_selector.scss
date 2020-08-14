@@ -1,7 +1,10 @@
-
+.selector{
+    width: 100%;
+}
 .selector-wrapper {
     position: relative;
     user-select: none;
+    width: 100%;
 }
 .selector-select {
     position: relative;
@@ -14,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 22px;
+    padding: 0 $basePadding/2 0 $basePadding;
     cursor: pointer;
     border-radius: $borderRadius;
     border: 1px solid $borderColor;
@@ -63,7 +66,8 @@
     width: 30px;
     transition: all 0.5s;
     transform: rotate(0);
-    display: flex;  
+    display: flex;
+    justify-content: flex-end;
 }
 
 .open .selector__icon {

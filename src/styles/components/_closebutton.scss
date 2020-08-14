@@ -2,4 +2,14 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 20px;
+        height: 20px;
+    }
 }

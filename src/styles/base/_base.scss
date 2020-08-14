@@ -9,6 +9,8 @@ main{
 }
 input[type="text"]{
     border-radius: $borderRadius;
+    border: $borderStyle;
+    padding: $basePadding/2;
 }
 ::placeholder{
     font-style: italic;

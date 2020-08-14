@@ -21,14 +21,16 @@ const s2_Options = [
     {label:'in list', value: 'in list'}
 ];
 
-function QueryRow(){
+function QueryRow(props){
+    const onCloseHandler = (e) => {
+        props.closeHandler(e);
+    }
     return (
         <div className="query-row">
-            <CloseButton />
+            <CloseButton onClick={onCloseHandler} />        
             <Selector options={s1_Options}/>
             <Selector options={s2_Options}/>
             <input type="text" placeholder="website.com"></input>
-
         </div>)
 }
 export default QueryRow;

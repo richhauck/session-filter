@@ -1,9 +1,20 @@
 .searchbutton{
     border: none;
-    display: inline-block;
-    padding-right: 2em;
+    padding-right: 1.5em;
+
+    div{
+        display: flex;
+        vertical-align: middle;
+        align-content: space-around;
+    }
 
     img{
+        display: inline;
         margin-right: 5px;
+        background-color: blue;
+    }
+    span{
+        display: inline-block;
+        background-color: red;
     }
 }

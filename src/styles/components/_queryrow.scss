@@ -1,11 +1,22 @@
 .query-row{
     display: flex;
-    border: 1px solid #c7d0da;
+    border: $borderStyle;
     border-radius: $borderRadius;
     padding: $basePadding;  
-    margin-bottom: $basePadding;  
-    
+    margin-bottom: $basePadding; 
+    justify-content: space-evenly; 
+
     & > * {
         margin: 0 $basePadding/2;
+    }
+    
+    & > div{
+        height: 32px;
+        flex-grow: 1;
+        display: inline-flex;
+    }
+    & input{
+        height: 21px;
+        width: 100%;
     }
 }
