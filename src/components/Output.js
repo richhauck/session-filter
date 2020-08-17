@@ -1,6 +1,9 @@
 import React from 'react';
+import {useObserver} from 'mobx-react-lite';
+import {StoreContext} from '../stores/QueryProvider';
 
 function Output(){
-    return <div id="output">Your Generated SQL Statement goes here:</div>
+    const store = React.useContext(StoreContext);
+    return useObserver(() => (<>{store.showOutput && <div id="output">{store.output}</div>}</>));
 }
 export default Output;

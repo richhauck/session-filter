@@ -1,36 +1,30 @@
 import React from 'react';
 import './styles/main.scss';
-import QueryRow from './components/QueryRow';
+import {QueryProvider, StoreContext} from './stores/QueryProvider';
+import QueryRowList from './components/QueryRowList';
 import SearchButton from './components/SearchButton';
 import Output from './components/Output';
 
 function App() {
-  const addRow = () => {
-    console.log('add row');
-  }
+  const store = React.useContext(StoreContext);
   const reset = () => {
-    console.log('reset');
-  }
-  const onCloseHandler = (e) => {
-    console.log('close', e);
+    store.reset();
   }
   const onSearchHandler = (e) => {
     console.log('search');
   }
   return (
-    <main className="App">
-      <h1>Search for Sessions</h1>
-      <div id="query-holder">
-        <QueryRow closeHandler={onCloseHandler} />
-        <QueryRow closeHandler={onCloseHandler} />
-      </div>
-      <button className="button" onClick={addRow}>And</button>
-      <footer>
-        <SearchButton onClick={onSearchHandler} /> 
-        <button className="button disabled" onClick={reset}>Reset</button>
-      </footer>
-      <Output/>
-    </main>
+    <QueryProvider>
+      <main className="App">
+        <h1>Search for Sessions</h1>
+        <QueryRowList />
+        <footer>
+          <SearchButton onClick={onSearchHandler} /> 
+          <button className="button disabled" onClick={reset}>Reset</button>
+        </footer>
+        <Output/>
+      </main>
+    </QueryProvider>
   );
 }
 

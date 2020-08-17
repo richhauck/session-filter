@@ -1,36 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Selector from './Selector';
 import CloseButton from './CloseButton';
-
-const s1_Options = [
-    {label:"User Email", value:"User Email"},
-    {label:"Screen Width", value:"Screen Width"},
-    {label:"Screen Height", value:"Screen Height"},
-    {label:"# of Visits", value:"# of Visits"},
-    {label:"First", value:"First"},
-    {label:"Name", value:"Name"},
-    {label:"Last Name", value:"Last Name"},
-    {label:"Page Response time (ms)", value:"Page Response time (ms)"},
-    {label:"Domain", value:"Domain"},
-    {label:"Page Path", value:"Page Path"}
-];
-const s2_Options = [
-    {label:'equals', value:'equals'}, 
-    {label:'contains', value: 'contains'}, 
-    {label:'starts with', value: 'starts with'}, 
-    {label:'in list', value: 'in list'}
-];
+import {useObserver} from 'mobx-react-lite';
+import {StoreContext} from '../stores/QueryProvider';
 
 function QueryRow(props){
-    const onCloseHandler = (e) => {
-        props.closeHandler(e);
+    const store = React.useContext(StoreContext);
+    const [predicateType, setPredicateType] = useState(store.predicateOptions[0].type);
+    const onSelectChangeHandler = (id) => {
+        setPredicateType(id, store.predicateOptions[id].type);
     }
-    return (
+    const onCloseHandler = (e) => {
+        store.removeQuery(props['data-id']);
+    }
+    return useObserver(() => (
         <div className="query-row">
             <CloseButton onClick={onCloseHandler} />        
-            <Selector options={s1_Options}/>
-            <Selector options={s2_Options}/>
-            <input type="text" placeholder="website.com"></input>
-        </div>)
+            <Selector onChange={onSelectChangeHandler} options={store.predicateOptions}/>
+
+            {predicateType==='string' && <><Selector onChange={onSelectChangeHandler} options={store.stringOptions}/>
+            <input type="text" required placeholder="website.com"></input></>}
+
+            {predicateType==='integer' && <><span>is</span>
+            <Selector onChange={onSelectChangeHandler} options={store.integerOptions}/>
+            <input type="text" value="0"></input>
+            <span>and</span>
+            <input type="text" value="0"></input>
+            </>}
+        </div>))
 }
 export default QueryRow;
