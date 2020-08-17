@@ -11,10 +11,11 @@
     img{
         display: inline;
         margin-right: 5px;
-        background-color: blue;
+        height: 22px;
+        line-height: 0;
     }
     span{
         display: inline-block;
-        background-color: red;
+        vertical-align: middle;
     }
 }
