@@ -1,4 +1,5 @@
 .searchbutton{
+    height: 40px;
     border: none;
     padding-right: 1.5em;
 
@@ -6,13 +7,17 @@
         display: flex;
         vertical-align: middle;
         align-content: space-around;
+        position: relative;
+        padding-left: 26px;
     }
 
     img{
         display: inline;
         margin-right: 5px;
-        height: 22px;
-        line-height: 0;
+        height: 18px;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
     span{
         display: inline-block;

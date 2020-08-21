@@ -9,6 +9,16 @@
     & > * {
         margin: 0 $basePadding/2;
     }
+
+    & > span {
+        height: 17px;
+        flex-grow: 1;
+        display: inline-flex;
+        background-color: $textBg;
+        padding: $basePadding/2 $basePadding;  
+        border: $borderStyle;
+        border-radius: $borderRadius;
+    }
     
     & > div{
         height: 32px;
@@ -16,7 +26,7 @@
         display: inline-flex;
     }
     & input{
-        height: 21px;
+        height: 19px;
         width: 100%;
     }
 }
