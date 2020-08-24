@@ -25,7 +25,6 @@ function Selector(props){
         if(props.onChange){
             props.onChange(id);
         }
-        // TODO: set styling on selected option
     }
 
     let classes = classNames('selector', {'open': isOpen});

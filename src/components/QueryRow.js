@@ -25,13 +25,13 @@ function QueryRow(props){
             <Selector selectedId={store.getPredicateId(myRowId)} onChange={onSelect1ChangeHandler} options={store.predicateOptions}/>
 
             {/* Second Selector - only for string values */}
-            {store.getPredicateType(myRowId) ==='string' && <Selector onChange={onSelect2ChangeHandler} options={store.stringOptions}/>}
+            {store.getPredicateType(myRowId) ==='string' && <Selector selectedId={store.getOperatorId(myRowId)} onChange={onSelect2ChangeHandler} options={store.stringOptions}/>}
 
             {/* "is" - displayed only for selector 1: 'number' and selector 2: is not 'equals' */}
             {store.getPredicateType(myRowId) ==='number' && store.getOperatorId(myRowId) !== 0 && <span>is</span>}
 
             {/* Second Selector - for integer */}
-            {store.getPredicateType(myRowId) ==='number' && <Selector onChange={onSelect2ChangeHandler} options={store.integerOptions}/>}
+            {store.getPredicateType(myRowId) ==='number' && <Selector selectedId={store.getOperatorId(myRowId)}  onChange={onSelect2ChangeHandler} options={store.integerOptions}/>}
 
             {/* displayed only for range of integer values */}
             {store.getPredicateType(myRowId) ==='number' && store.getOperatorId(myRowId) === 1 && <><input type="text" placeholder="0"></input><span>and</span><input type="text" placeholder="0"></input></>}
