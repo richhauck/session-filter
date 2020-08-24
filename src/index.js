@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {QueryProvider, StoreContext} from './stores/QueryProvider';
+import {QueryProvider} from './stores/QueryProvider';
 
 ReactDOM.render(
   <React.StrictMode>

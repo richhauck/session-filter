@@ -8,7 +8,7 @@ function Selector(props){
     const wrapperRef = useRef(null);
     const options = props.options;
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedId, setSelectedId] = useState(0);
+    const [selectedId, setSelectedId] = useState(props.selected ? props.selected : 0);
 
     /**
      * Toggles isOpen value which determines if dropdown displays.
@@ -20,7 +20,7 @@ function Selector(props){
      * Sets selected id and propagates to parent if props function is passed.
     */
     const onOptionsClickHandler = (e) => {
-        const id = e.target.getAttribute('data-id');
+        const id = parseInt(e.target.getAttribute('data-id'));
         setSelectedId(id);
         if(props.onChange){
             props.onChange(id);
