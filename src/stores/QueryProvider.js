@@ -70,7 +70,8 @@ export const QueryProvider = ({children}) => {
       store.queries[rowId].oId = oId;
     },
     getOperatorId: (rowId) => {
-      return store.queries[rowId].oId;
+      const oId = store.queries[rowId] ? store.queries[rowId].oId : 0;
+      return oId;
     },
     getPlaceholder: (rowId) => {
       const pId = store.queries[rowId] ? store.queries[rowId].pId : 0;
