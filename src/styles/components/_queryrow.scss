@@ -1,8 +1,12 @@
+.queryrowlist .button{
+    height: auto;
+    padding:$basePadding/4 $basePadding;
+}
 .query-row{
     display: flex;
     border: $borderStyle;
     border-radius: $borderRadius;
-    padding: $basePadding;  
+    padding: $basePadding*1.5 $basePadding/2;  
     margin-bottom: $basePadding; 
     justify-content: space-evenly; 
 
