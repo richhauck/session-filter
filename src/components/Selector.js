@@ -8,7 +8,7 @@ function Selector(props){
     const wrapperRef = useRef(null);
     const options = props.options;
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedId, setSelectedId] = useState(props.selected ? props.selected : 0);
+    const [selectedId, setSelectedId] = useState(0);
 
     /**
      * Toggles isOpen value which determines if dropdown displays.
@@ -46,6 +46,18 @@ function Selector(props){
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen, selectedId]);
+
+    useEffect(() => {
+        if(props.selectedId){
+            if(selectedId !== props.selectedId){
+                setSelectedId(props.selectedId);
+            }
+        }else{
+            setSelectedId(0);
+        }
+    }, [props, selectedId]);
+
+
     return (
         <div className="selector-wrapper" onClick={onClickHandler}>
         <div className={classes}>
