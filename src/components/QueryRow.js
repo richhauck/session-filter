@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import Selector from './Selector';
 import CloseButton from './CloseButton';
 import {useObserver} from 'mobx-react-lite';
 import {StoreContext} from '../stores/QueryProvider';
+import classNames from 'classnames';
 
 function QueryRow(props){
+    const textInput = useRef(null);
     const store = React.useContext(StoreContext);
     const myRowId = props['data-id'];
 
@@ -16,6 +18,15 @@ function QueryRow(props){
     }
     const onCloseHandler = () => {
         store.removeQuery(myRowId);
+    }
+    const onInputChangeHandler = (event) => {
+        store.setTextValue(myRowId, event.target.value);
+    }
+    const onNum1ChangeHandler = (event) => {
+        store.setNum1Value(myRowId, event.target.value);
+    }
+    const onNum2ChangeHandler = (event) => {
+        store.setNum2Value(myRowId, event.target.value);
     }
     return useObserver(() => (
         <div className="query-row">
@@ -33,11 +44,15 @@ function QueryRow(props){
             {/* Second Selector - for integer */}
             {store.getPredicateType(myRowId) ==='number' && <Selector selectedId={store.getOperatorId(myRowId)}  onChange={onSelect2ChangeHandler} options={store.integerOptions}/>}
 
-            {/* displayed only for range of integer values */}
-            {store.getPredicateType(myRowId) ==='number' && store.getOperatorId(myRowId) === 1 && <><input type="text" placeholder="0"></input><span>and</span><input type="text" placeholder="0"></input></>}
+            {/* Text inputs displayed only for range of integer values */}
+            {store.getPredicateType(myRowId) ==='number' && store.getOperatorId(myRowId) === 1 && <>
+            <input type="text" onChange={onNum1ChangeHandler} required="required" className={classNames({'warning': (store.wasSearchCalled && store.getNum1Value(myRowId) === '')})} value={store.getNum1Value(myRowId)} placeholder="0"></input>
+            <span>and</span>
+            <input type="text" onChange={onNum2ChangeHandler} required="required" className={classNames({'warning': (store.wasSearchCalled && store.getNum2Value(myRowId) === 0)})} value={store.getNum2Value(myRowId)} placeholder="0"></input>
+            </>}
 
             {/* Input Text */}
-            {!(store.getPredicateType(myRowId) === 'number' && store.getOperatorId(myRowId) === 1) && <input type="text" required="required" placeholder={store.getPlaceholder(myRowId)}></input>}
+            {!(store.getPredicateType(myRowId) === 'number' && store.getOperatorId(myRowId) === 1) && <input type="text" ref={textInput} onChange={onInputChangeHandler} required="required" className={classNames({'warning': (store.wasSearchCalled && store.getTextValue(myRowId) === '')})} value={store.getTextValue(myRowId)} placeholder={store.getPlaceholder(myRowId)}></input>}
 
 
         </div>))

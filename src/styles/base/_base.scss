@@ -18,3 +18,7 @@ input[type="text"]{
 ::placeholder{
     font-style: italic;
 }
+
+input.warning{
+    border: 1px solid red;
+}
